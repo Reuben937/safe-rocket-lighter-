@@ -1,0 +1,25 @@
+#include <Servo.h>
+
+const int buttonPin = 8;
+const int servoPin = 7;
+
+Servo myServo;
+
+int buttonState = 0;
+
+void setup() {
+  myServo.attach(servoPin);
+  pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) {
+    delay(10000); // Wait for 10 seconds
+    myServo.write(180); // Turn servo to 180 degrees
+    delay(6000); // Wait for 6 seconds
+    myServo.write(0); // Return servo to initial position (0 degrees)
+  }
+}
+
